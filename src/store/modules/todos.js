@@ -10,17 +10,17 @@ const getters = {
 
 const actions = {
     async fetchTodos({commit}) {
-        const response = await axios.get('https://jsonplaceholder.typicode.com/todos');
+        const response = await axios.get('https://622dca7f8d943bae3486f5a5.mockapi.io/api/todos');
         commit('setTodos', response.data);
     },
 
     async addTodo({commit}, title){
-        const response = await axios.post('https://jsonplaceholder.typicode.com/todos', {title, completed: false});
+        const response = await axios.post('https://622dca7f8d943bae3486f5a5.mockapi.io/api/todos', {title, completed: false});
         commit('newTodo', response.data);
     },
 
     async deleteTodo({commit}, id){
-        await axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`);
+        await axios.delete(`https://622dca7f8d943bae3486f5a5.mockapi.io/api/todos/${id}`);
         commit('removeTodo', id)
     },
 
@@ -29,12 +29,12 @@ const actions = {
         //Get selected number
         const limit = parseInt(e.target.options[e.target.options.selectedIndex].innerText);
 
-        const response = await axios.get(`https://jsonplaceholder.typicode.com/todos?_limit=${limit}`);
+        const response = await axios.get(`https://622dca7f8d943bae3486f5a5.mockapi.io/api/todos?_limit=${limit}`);
         commit('setTodos', response.data)
     },
 
     async updateTodo({commit}, updTodo){
-        const response = await axios.put(`https://jsonplaceholder.typicode.com/todos/${updTodo.id}`, updTodo);
+        const response = await axios.put(`https://622dca7f8d943bae3486f5a5.mockapi.io/api/todos/${updTodo.id}`, updTodo);
         commit('updateTodo', response.data);
     }
 };
